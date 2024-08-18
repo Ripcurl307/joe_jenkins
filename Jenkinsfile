@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EMAIL_RECIPIENT = 'your-email@example.com'
+        EMAIL_RECIPIENT = 'ripcurl399@gmail.com'
     }
 
     stages {
@@ -80,7 +80,7 @@ pipeline {
             steps {
                 echo 'Deploying to production server on AWS EC2'
                 // Simulate deployment
-                echo 'ssh user@production-server "deploy_script.sh"'
+                echo 'ssh joe@production-server "deploy_script.sh"'
             }
         }
     }
