@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         EMAIL_RECIPIENT = 'ripcurl399@gmail.com'
+        echo 'obtain email'
     }
 
     stages {
