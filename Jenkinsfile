@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EMAIL_RECIPIENT = 'ripcurl399@gmail.com'
-        echo 'obtain email'
+        EMAIL_RECIPIENT = 'trey@talttem.com.au'
     }
 
     stages {
