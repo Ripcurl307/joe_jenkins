@@ -81,6 +81,7 @@ pipeline {
                 echo 'Deploying to production server on AWS EC2'
                 // Simulate deployment
                 echo 'ssh joe@production-server "deploy_script.sh"'
+                echo 'done'
             }
         }
     }
