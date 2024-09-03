@@ -24,7 +24,8 @@ pipeline {
                 always {
                     script {
                         def status = currentBuild.currentResult
-                        mail bcc: '', body: "Stage 'Unit and Integration Tests' completed with status: ${status}\n Log:\n ${BUILD_LOG, maxLines, escapeHtml}",
+                        def buildLog = currentBuild.rawBuild.getLog(100).join('\n') // Adjust number of lines as needed
+                        mail bcc: '', body: "Stage 'Security Scan' completed with status: ${status}\n\nBuild Log:\n${buildLog}", 
                              cc: '', from: '', mimeType: 'text/plain',
                              replyTo: '', subject: "Jenkins Pipeline - Unit and Integration Tests Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
@@ -51,7 +52,8 @@ pipeline {
                 always {
                     script {
                         def status = currentBuild.currentResult
-                        mail bcc: '', body: "Stage 'Security Scan' completed with status: ${status}\n Log:\n ${BUILD_LOG, maxLines, escapeHtml}", 
+                        def buildLog = currentBuild.rawBuild.getLog(100).join('\n') // Adjust number of lines as needed
+                        mail bcc: '', body: "Stage 'Security Scan' completed with status: ${status}\n\nBuild Log:\n${buildLog}", 
                              cc: '', from: '', mimeType: 'text/plain',
                              replyTo: '', subject: "Jenkins Pipeline - Security Scan Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
