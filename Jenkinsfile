@@ -24,15 +24,14 @@ pipeline {
                 always {
                     script {
                         def status = currentBuild.currentResult
-                        def logFile = "build_log_${env.BUILD_NUMBER}.txt"
-                        def buildLog = currentBuild.rawBuild.getLog(100).join('\n') // Adjust number of lines as needed
-                        writeFile file: logFile, text: buildLog
-                        emailtext(
-                             attachLog: true, attachmentsPattern: logFile, body: "Stage 'Unit and Integration Tests' completed with status: ${status}", 
-                             mimeType: 'text/plain',
-                             subject: "Jenkins Pipeline - Unit and Integration Tests Status: ${status}",
-                             to: "${env.EMAIL_RECIPIENT}"
-                            )
+                        
+                        mail
+                              body: "Stage 'Unit and Integration Tests' completed with status: ${status}", 
+                              mimeType: 'text/plain',
+                              subject: "Jenkins Pipeline - Unit and Integration Tests Status: ${status}",
+                              to: "${env.EMAIL_RECIPIENT}",
+                              attachLog: true
+                            
                     }
                 }
             }
@@ -56,11 +55,9 @@ pipeline {
                 always {
                     script {
                         def status = currentBuild.currentResult
-                        def logFile = "build_log_${env.BUILD_NUMBER}.txt"
-                        def buildLog = currentBuild.rawBuild.getLog(100).join('\n') // Adjust number of lines as needed
-                        writeFile file: logFile, text: buildLog
-                        emailtext(
-                             attachLog: true, attachmentsPattern: logFile, body: "Stage 'Security Scan' completed with status: ${status}", 
+                        
+                        mail
+                             attachLog: true, body: "Stage 'Security Scan' completed with status: ${status}", 
                              mimeType: 'text/plain',
                              subject: "Jenkins Pipeline - Security Scan Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
