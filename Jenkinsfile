@@ -27,7 +27,7 @@ pipeline {
                         def logFile = "build_log_${env.BUILD_NUMBER}.txt"
                         def buildLog = currentBuild.rawBuild.getLog(100).join('\n') // Adjust number of lines as needed
                         writeFile file: logFile, text: buildLog
-                        mail bcc: '', body: "Stage 'Security Scan' completed with status: ${status}\n\nBuild Log:\n${logFile}", 
+                        mail attachLog: true, attachmentsPattern: 'generatedFile.txt', bcc: '', body: "Stage 'Security Scan' completed with status: ${status}\n\nBuild Log:\n${logFile}", 
                              cc: '', from: '', mimeType: 'text/plain',
                              replyTo: '', subject: "Jenkins Pipeline - Unit and Integration Tests Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
@@ -57,7 +57,7 @@ pipeline {
                         def logFile = "build_log_${env.BUILD_NUMBER}.txt"
                         def buildLog = currentBuild.rawBuild.getLog(100).join('\n') // Adjust number of lines as needed
                         writeFile file: logFile, text: buildLog
-                        mail bcc: '', body: "Stage 'Security Scan' completed with status: ${status}\n\nBuild Log:\n${logFile}", 
+                        mail attachLog: true, attachmentsPattern: 'generatedFile.txt', bcc: '', body: "Stage 'Security Scan' completed with status: ${status}\n\nBuild Log:\n${logFile}", 
                              cc: '', from: '', mimeType: 'text/plain',
                              replyTo: '', subject: "Jenkins Pipeline - Security Scan Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
