@@ -32,6 +32,7 @@ pipeline {
                              mimeType: 'text/plain',
                              subject: "Jenkins Pipeline - Unit and Integration Tests Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
+                            )
                     }
                 }
             }
@@ -63,6 +64,7 @@ pipeline {
                              mimeType: 'text/plain',
                              subject: "Jenkins Pipeline - Security Scan Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
+                            )
                     }
                 }
             }
