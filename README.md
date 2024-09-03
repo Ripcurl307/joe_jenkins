@@ -1,4 +1,3 @@
 # code
-## does it work now? ....now? ... I guess.... nope..
-huh pain pain pain^2 pain^3 pain^4
-L bozo
+## pain pain pain^2 pain^3 pain^4 pain^5
+
