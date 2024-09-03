@@ -26,11 +26,11 @@ pipeline {
                         def status = currentBuild.currentResult
                         
                         mail
-                              body: "Stage 'Unit and Integration Tests' completed with status: ${status}", 
+                              attachLog: true, body: "Stage 'Unit and Integration Tests' completed with status: ${status}", 
                               mimeType: 'text/plain',
                               subject: "Jenkins Pipeline - Unit and Integration Tests Status: ${status}",
-                              to: "${env.EMAIL_RECIPIENT}",
-                              attachLog: true
+                              to: "${env.EMAIL_RECIPIENT}"
+                              
                             
                     }
                 }
@@ -61,7 +61,7 @@ pipeline {
                              mimeType: 'text/plain',
                              subject: "Jenkins Pipeline - Security Scan Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
-                            )
+                            
                     }
                 }
             }
