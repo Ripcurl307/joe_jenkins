@@ -56,7 +56,7 @@ pipeline {
                         def status = currentBuild.currentResult
                         def logFile = "build_log_${env.BUILD_NUMBER}.txt"
                         def buildLog = currentBuild.rawBuild.getLog(100).join('\n') // Adjust number of lines as needed
-                        writeFile file: logFileName, text: buildLog
+                        writeFile file: logFile, text: buildLog
                         mail bcc: '', body: "Stage 'Security Scan' completed with status: ${status}\n\nBuild Log:\n${buildLog}", 
                              cc: '', from: '', mimeType: 'text/plain',
                              replyTo: '', subject: "Jenkins Pipeline - Security Scan Status: ${status}",
