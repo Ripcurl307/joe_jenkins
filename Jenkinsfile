@@ -27,9 +27,10 @@ pipeline {
                         def logFile = "build_log_${env.BUILD_NUMBER}.txt"
                         def buildLog = currentBuild.rawBuild.getLog(100).join('\n') // Adjust number of lines as needed
                         writeFile file: logFile, text: buildLog
-                        mail attachLog: true, attachmentsPattern: logFile, bcc: '', body: "Stage 'Security Scan' completed with status: ${status}", 
-                             cc: '', from: '', mimeType: 'text/plain',
-                             replyTo: '', subject: "Jenkins Pipeline - Unit and Integration Tests Status: ${status}",
+                        emailtext(
+                             attachLog: true, attachmentsPattern: logFile, body: "Stage 'Unit and Integration Tests' completed with status: ${status}", 
+                             mimeType: 'text/plain',
+                             subject: "Jenkins Pipeline - Unit and Integration Tests Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
                     }
                 }
@@ -57,9 +58,10 @@ pipeline {
                         def logFile = "build_log_${env.BUILD_NUMBER}.txt"
                         def buildLog = currentBuild.rawBuild.getLog(100).join('\n') // Adjust number of lines as needed
                         writeFile file: logFile, text: buildLog
-                        mail attachLog: true, attachmentsPattern: logFile, bcc: '', body: "Stage 'Security Scan' completed with status: ${status}", 
-                             cc: '', from: '', mimeType: 'text/plain',
-                             replyTo: '', subject: "Jenkins Pipeline - Security Scan Status: ${status}",
+                        emailtext(
+                             attachLog: true, attachmentsPattern: logFile, body: "Stage 'Security Scan' completed with status: ${status}", 
+                             mimeType: 'text/plain',
+                             subject: "Jenkins Pipeline - Security Scan Status: ${status}",
                              to: "${env.EMAIL_RECIPIENT}"
                     }
                 }
