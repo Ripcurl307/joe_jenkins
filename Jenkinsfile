@@ -25,7 +25,7 @@ pipeline {
                     script {
                         def status = currentBuild.currentResult
                         
-                        emailtext(
+                        mail(
                               attachLog: true, body: "Stage 'Unit and Integration Tests' completed with status: ${status}", 
                               mimeType: 'text/plain',
                               subject: "Jenkins Pipeline - Unit and Integration Tests Status: ${status}",
@@ -56,7 +56,7 @@ pipeline {
                     script {
                         def status = currentBuild.currentResult
                         
-                        emailtext(
+                        mail(
                              attachLog: true, body: "Stage 'Security Scan' completed with status: ${status}", 
                              mimeType: 'text/plain',
                              subject: "Jenkins Pipeline - Security Scan Status: ${status}",
